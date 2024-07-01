@@ -93,6 +93,8 @@ Use the following keyboard shortcuts in ANY TEXT FIELD ( search bars, google doc
 Ensure you set your API keys by modifying the `keys.txt` file in the project directory. Update this file with your actual API keys:
 
 ```
+OPENAI_API_BASE=your-openai-base-url-here
+ANTHROPIC_API_BASE=your-anthropic-base-url-here
 OPENAI_API_KEY=your-openai-key-here
 GEMINI_API_KEY=your-gemini-key-here
 ANTHROPIC_API_KEY=your-anthropic-key-here

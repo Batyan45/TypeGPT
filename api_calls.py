@@ -16,8 +16,10 @@ def read_api_keys(file_path):
 
 api_keys = read_api_keys('keys.txt')
 OPENAI_API_KEY = api_keys['OPENAI_API_KEY']
+OPENAI_API_BASE = api_keys.get('OPENAI_API_BASE', 'https://api.openai.com/v1')
 GEMINI_API_KEY = api_keys['GEMINI_API_KEY']
 ANTHROPIC_API_KEY = api_keys['ANTHROPIC_API_KEY']
+ANTHROPIC_API_BASE = api_keys.get('ANTHROPIC_API_BASE', 'https://api.anthropic.com/v1')
 
 # System prompt text
 with open('system_prompt.txt', 'r') as file:
@@ -26,7 +28,7 @@ with open('system_prompt.txt', 'r') as file:
 
 # Function to query OpenAI
 def query_openai(text, image_base64=None):
-    url = 'https://api.openai.com/v1/chat/completions'
+    url = f'{OPENAI_API_BASE}/chat/completions'
     headers = {
         'Authorization': f'Bearer {OPENAI_API_KEY}',
         'Content-Type': 'application/json'
@@ -47,7 +49,7 @@ def query_openai(text, image_base64=None):
         })
     
     data = {
-        'model': 'gpt-4-turbo',
+        'model': 'gpt-4o',
         'messages': messages,
     }
     
@@ -96,7 +98,7 @@ def query_gemini(input_text, image_base64=None):
 # Function to query Claude
 def query_claude(text, image_base64=None):
     try:
-        anthropic = Anthropic(api_key=ANTHROPIC_API_KEY)
+        anthropic = Anthropic(api_key=ANTHROPIC_API_KEY, base_url=ANTHROPIC_API_BASE)
         
         messages = [
             {"role": "user", "content": [{"type": "text", "text": text}]}
