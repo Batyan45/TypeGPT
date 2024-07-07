@@ -45,7 +45,7 @@ Open your terminal/shell, and enter the following commands.
 3. Navigate into the project directory:
 ```cd TypeGPT```
 
-4. Give execute permission, and run the install.sh file:
+4. Give execute permission, and run the install.sh file (for Unix-based systems):
 
 on mac
 ```chmod +x install.sh```
@@ -61,13 +61,17 @@ on mac
 ### Run using the provided executable (will allow the program to run in the background) ###
 
 
-```./run.sh```
+```./run.sh``` (for Unix-based systems)
+
+```run.bat``` (for Windows)
 
 To manage the program, use:
 ```ps aux | grep TypeGPT.py```
 
 and in order to stop the program from running, grab the PID you're shown when you run the command above (a 5 digit number associated with the process), and type the following:
-```kill -9 12812``` 
+```kill -9 12812``` (for Unix-based systems)
+
+```stop.bat``` (for Windows)
 
 here our PID is 12812 for example.
 
@@ -106,7 +110,7 @@ This file is critical for the application to function correctly, so be sure to u
 
 Modify the `system_prompt.txt` file to customize the behavior and responses of your AI based on your needs. 
 You can also change the versions of the AI models in the `api_calls.py` file. Currently, the defaults are:
-- ChatGPT: gpt-4-turbo
+- ChatGPT: gpt-4o
 - Gemini: gemini-1.0-pro-vision-latest
 - Claude: claude-3-5-sonnet-20240620
 - Llama3: Uses the local Ollama instance
